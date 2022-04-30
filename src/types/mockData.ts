@@ -1,0 +1,88 @@
+import { book } from "./interfaces";
+
+export const defaultBooks: book[] = [
+  {
+    id: 1,
+    title: "A tale of two cities",
+    author: "Charles Dickens",
+    isbn: "124-4125-123-42-1",
+    price: 20,
+  },
+  {
+    id: 2,
+    title: "A tale of two cities",
+    author: "Charles Dickens",
+    isbn: "124-4125-123-42-1",
+    price: 20,
+  },
+  {
+    id: 3,
+    title: "A tale of two cities",
+    author: "Charles Dickens",
+    isbn: "124-4125-123-42-1",
+    price: 20,
+  },
+  {
+    id: 4,
+    title: "Jane Eyre",
+    author: "Charlotte Bronte",
+    isbn: "124-5325-833-41-9",
+    price: 15,
+  },
+  {
+    id: 5,
+    title: "Jane Eyre",
+    author: "Charlotte Bronte",
+    isbn: "124-5325-833-41-9",
+    price: 15,
+  },
+  {
+    id: 6,
+    title: "Jane Eyre",
+    author: "Charlotte Bronte",
+    isbn: "124-5325-833-41-9",
+    price: 15,
+  },
+  {
+    id: 7,
+    title: "Jane Eyre",
+    author: "Charlotte Bronte",
+    isbn: "124-5325-833-41-9",
+    price: 15,
+  },
+  {
+    id: 8,
+    title: "Game of Thrones 1",
+    author: "George R. R. Martin",
+    isbn: "812-6125-213-61-2",
+    price: 25,
+  },
+  {
+    id: 9,
+    title: "Game of Thrones 1",
+    author: "George R. R. Martin",
+    isbn: "812-6125-213-61-2",
+    price: 25,
+  },
+  {
+    id: 10,
+    title: "Game of Thrones 2",
+    author: "George R. R. Martin",
+    isbn: "812-6125-213-62-2",
+    price: 25,
+  },
+  {
+    id: 11,
+    title: "Game of Thrones 3",
+    author: "George R. R. Martin",
+    isbn: "812-6125-213-63-2",
+    price: 25,
+  },
+  {
+    id: 12,
+    title: "Harry Potter",
+    author: "J. K. Rowling",
+    isbn: "812-8510-182-57-5",
+    price: 10,
+  },
+];
