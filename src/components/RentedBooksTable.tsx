@@ -1,14 +1,4 @@
-import {
-  TableContainer,
-  Table,
-  TableCaption,
-  Thead,
-  Tr,
-  Th,
-  Tbody,
-  Td,
-  Tfoot,
-} from "@chakra-ui/react";
+import { Text, Grid, GridItem, Divider } from "@chakra-ui/react";
 import React from "react";
 import { useRecoilValue } from "recoil";
 import { rentedBooksState } from "../state/atoms";
@@ -18,45 +8,59 @@ interface RentedBooksTableProps {}
 
 const RentedBooksTable: React.FC<RentedBooksTableProps> = () => {
   const rentedBooks = useRecoilValue(rentedBooksState);
-  return (
+  const tableHead = (
     <>
-      <TableContainer>
-        <Table variant="simple">
-          <TableCaption>The rended books</TableCaption>
-          <Thead>
-            <Tr>
-              <Th>Title</Th>
-              <Th>ISBN</Th>
-              <Th>Renter</Th>
-              <Th isNumeric>To pay</Th>
-              <Th>Date of rent</Th>
-            </Tr>
-          </Thead>
-          <Tbody>
-            {rentedBooks.map((book: book, key) => {
-              return (
-                <Tr key={key}>
-                  <Td>{book.title}</Td>
-                  <Td>{book.isbn}</Td>
-                  <Td>{book.renter}</Td>
-                  <Td isNumeric>{book.price}</Td>
-                  <Td>{book.dateOfRent?.toDateString()}</Td>
-                </Tr>
-              );
-            })}
-          </Tbody>
-          <Tfoot>
-            <Tr>
-              <Th>Title</Th>
-              <Th>ISBN</Th>
-              <Th>Renter</Th>
-              <Th isNumeric>Price</Th>
-              <Th>Date of rent</Th>
-            </Tr>
-          </Tfoot>
-        </Table>
-      </TableContainer>
+      <Text fontWeight="semibold" textTransform="uppercase">
+        Title
+      </Text>
+      <Text fontWeight="semibold" textTransform="uppercase">
+        Renter
+      </Text>
+      <Text
+        fontWeight="semibold"
+        textTransform="uppercase"
+        display={{ base: "none", lg: "initial" }}
+      >
+        ISBN
+      </Text>
+      <Text fontWeight="semibold" textTransform="uppercase">
+        To pay
+      </Text>
+      <Text fontWeight="semibold" textTransform="uppercase">
+        Date of rent
+      </Text>
     </>
+  );
+
+  return (
+    <Grid
+      templateColumns={{ base: "repeat(4, 1fr)", lg: "repeat(5, 1fr)" }}
+      columnGap={6}
+      rowGap={2}
+      textAlign="center"
+      overflowX="hidden"
+      p={4}
+    >
+      {tableHead}
+      {rentedBooks.map((book: book, key) => {
+        return (
+          <>
+            <GridItem colSpan={5}>
+              <Divider />
+            </GridItem>
+            <Text>{book.title}</Text>
+            <Text>{book.renter}</Text>
+            <Text display={{ base: "none", lg: "initial" }}>{book.isbn}</Text>
+            <Text>{book.price}</Text>
+            <Text>{book.dateOfRent?.toDateString()}</Text>
+          </>
+        );
+      })}
+      <GridItem colSpan={5}>
+        <Divider />
+      </GridItem>
+      {tableHead}
+    </Grid>
   );
 };
 

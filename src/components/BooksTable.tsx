@@ -1,14 +1,4 @@
-import {
-  TableContainer,
-  Table,
-  TableCaption,
-  Thead,
-  Tr,
-  Th,
-  Tbody,
-  Td,
-  Tfoot,
-} from "@chakra-ui/react";
+import { Grid, GridItem, Flex, Text, Divider } from "@chakra-ui/react";
 import React from "react";
 import { useRecoilValue } from "recoil";
 import { booksState } from "../state/atoms";
@@ -25,51 +15,66 @@ const BooksTable: React.FC<BooksTableProps> = () => {
       index === self.findIndex((t) => t.isbn === value.isbn)
   );
 
-  return (
+  const tableHead = (
     <>
-      <TableContainer>
-        <Table variant="simple">
-          <TableCaption>The collection of books</TableCaption>
-          <Thead>
-            <Tr>
-              <Th>Title</Th>
-              <Th>Author</Th>
-              <Th>ISBN</Th>
-              <Th isNumeric>Price</Th>
-              <Th>Copies</Th>
-            </Tr>
-          </Thead>
-          <Tbody>
-            {filteredBooks.map((book: book, key) => {
-              return (
-                <Tr key={key}>
-                  <Td>{book.title}</Td>
-                  <Td>{book.author || ""}</Td>
-                  <Td>{book.isbn}</Td>
-                  <Td isNumeric>{book.price}</Td>
-                  <Td>
-                    {currentBooks.reduce(
-                      (acc, currentBook) =>
-                        currentBook.title === book.title ? ++acc : acc,
-                      0
-                    )}
-                  </Td>
-                </Tr>
-              );
-            })}
-          </Tbody>
-          <Tfoot>
-            <Tr>
-              <Th>Title</Th>
-              <Th>Author</Th>
-              <Th>ISBN</Th>
-              <Th isNumeric>Price</Th>
-              <Th>Copies</Th>
-            </Tr>
-          </Tfoot>
-        </Table>
-      </TableContainer>
+      <Text fontWeight="semibold" textTransform="uppercase">
+        Title
+      </Text>
+      <Text fontWeight="semibold" textTransform="uppercase">
+        Author
+      </Text>
+      <Text
+        fontWeight="semibold"
+        textTransform="uppercase"
+        display={{ base: "none", lg: "initial" }}
+      >
+        ISBN
+      </Text>
+      <Text fontWeight="semibold" textTransform="uppercase">
+        Price
+      </Text>
+      <Text fontWeight="semibold" textTransform="uppercase">
+        Copies
+      </Text>
     </>
+  );
+
+  return (
+    <Grid
+      templateColumns={{ base: "repeat(4, 1fr)", lg: "repeat(5, 1fr)" }}
+      columnGap={6}
+      rowGap={2}
+      textAlign="center"
+      overflowX="hidden"
+      p={4}
+    >
+      {tableHead}
+      {filteredBooks.map((book: book, key) => {
+        return (
+          <>
+            <GridItem colSpan={5}>
+              <Divider />
+            </GridItem>
+            <Text>{book.title}</Text>
+            <Text>{book.author || ""}</Text>
+            <Text display={{ base: "none", lg: "initial" }}>{book.isbn}</Text>
+            <Text>{book.price}</Text>
+            <Text>
+              {currentBooks.reduce(
+                (acc, currentBook) =>
+                  currentBook.title === book.title ? ++acc : acc,
+                0
+              )}
+            </Text>
+          </>
+        );
+      })}
+      <GridItem colSpan={5}>
+        <Divider />
+      </GridItem>
+
+      {tableHead}
+    </Grid>
   );
 };
 
