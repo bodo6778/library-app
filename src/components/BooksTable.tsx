@@ -45,24 +45,25 @@ const BooksTable: React.FC<BooksTableProps> = () => {
       columnGap={6}
       rowGap={2}
       textAlign="center"
-      overflowX="hidden"
       p={4}
     >
       {tableHead}
       {filteredBooks.map((book: book, key) => {
         return (
           <>
-            <GridItem colSpan={5}>
+            <GridItem colSpan={5} key={key}>
               <Divider />
             </GridItem>
-            <Text>{book.title}</Text>
-            <Text>{book.author || ""}</Text>
-            <Text display={{ base: "none", lg: "initial" }}>{book.isbn}</Text>
-            <Text>{book.price}</Text>
-            <Text>
+            <Text key={key}>{book.title}</Text>
+            <Text key={key}>{book.author || ""}</Text>
+            <Text key={key} display={{ base: "none", lg: "initial" }}>
+              {book.isbn}
+            </Text>
+            <Text key={key}>{book.price}</Text>
+            <Text key={key}>
               {currentBooks.reduce(
                 (acc, currentBook) =>
-                  currentBook.title === book.title ? ++acc : acc,
+                  currentBook.isbn === book.isbn ? ++acc : acc,
                 0
               )}
             </Text>

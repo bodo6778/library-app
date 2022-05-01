@@ -5,7 +5,7 @@ interface LogoProps {}
 
 const Logo: React.FC<LogoProps> = () => {
   return (
-    <Heading as="h2" size="2xl">
+    <Heading p={8} as="h2" size="2xl">
       The Library
     </Heading>
   );
