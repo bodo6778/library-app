@@ -5,7 +5,9 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## How to run
 
-You do not need any database as the project uses [Recoil.js](https://recoiljs.org/) to hold it's state. 
+You can see the app live here: https://library-app-bodo6778.vercel.app/ 
+
+Or you can run in locally:
 First, run the development server:
 
 ```bash
@@ -13,6 +15,9 @@ npm run dev
 # or
 yarn dev
 ```
+
+You do not need any database as the project uses [Recoil.js](https://recoiljs.org/) to hold it's state. 
+
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
