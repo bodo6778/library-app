@@ -132,6 +132,7 @@ const RentBookModal: React.FC<RentModalProps> = ({ isOpen, onClose }) => {
               }
               setName("");
               setBookTitle("");
+              setSelectedBook(undefined);
               onClose();
             }}
           >
